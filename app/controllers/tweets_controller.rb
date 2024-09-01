@@ -5,7 +5,10 @@ class TweetsController < ApplicationController
   def index
     @tweets = Tweet.all
     # Wrap your collections with pagy in your actions
-    @pagy, @tweet = pagy(Tweet.all)
+    @pagy, @tweets = pagy(Tweet.all)
+    if params[:query_text].present?
+      @tweets = @tweets.search_full_text(params[:query_text])
+      end
   end
 
   # GET /tweets/1 or /tweets/1.json
