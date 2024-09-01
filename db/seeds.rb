@@ -10,3 +10,4 @@
 100.times do |i|
     Tweet.create(description: Faker::Twitter.user[:description], username: Faker::Twitter.user[:name])
 end
+puts "create 100 seed"
